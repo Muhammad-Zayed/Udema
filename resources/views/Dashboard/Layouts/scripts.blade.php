@@ -16,4 +16,6 @@
 
 <script type="text/javascript" src="/admin/assets/js/core/app.js"></script>
 <script type="text/javascript" src="/admin/assets/js/pages/dashboard.js"></script>
+{{--  <script src="/website/js/jquery-2.2.4.min.js"></script>  --}}
+
 <!-- /theme JS files -->

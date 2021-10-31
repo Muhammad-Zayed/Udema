@@ -120,6 +120,21 @@
 
 </div>
 <!-- /page container -->
+<script>
+    function myFunction(){
+        var category_id = document.getElementById('choose_category').value;
 
+        var xhr = new XMLHttpRequest();
+        
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4){
+                document.getElementById('change_category').innerHTML = xhr.responseText;
+            }
+        };
+        var path = '/dashboard/changeCategory/' + category_id;
+        xhr.open('GET', path);
+        xhr.send();
+    }
+</script>
 </body>
 </html>

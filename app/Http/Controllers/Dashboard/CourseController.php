@@ -10,24 +10,38 @@ use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
-
-    public function create(Category $category)
+    public function index()
     {
-        return view('Dashboard.Courses.add')
-            ->with('category', $category);
+        $courses = Course::with(['category','lessons'])->get();
+        $categories = Category::all();
+        return view('Dashboard.Courses.index',
+        [
+            'courses'=>$courses,
+            'categories'=>$categories
+        ]);
+    }
+
+    public function create()
+    {
+        $categories = Category::all();
+        return view('Dashboard.Courses.add',
+        [
+            'categories'=>$categories,
+    
+        ]);
     }
 
 
-    public function store(CourseRequest $request, Category $category)
+    public function store(CourseRequest $request)
     {
 
         $validatedData = $request->except(['image', '_token']);
         if ($request->hasFile('image')) {
             $validatedData['image'] = uploader($request, 'image');
         }
-        $validatedData['category_id'] = $category->id;
+
         Course::create($validatedData);
-        return redirect()->route('dashboard.categories.show', $category->id)
+        return redirect()->route('dashboard.categories.show', $validatedData['category_id'])
             ->with('success', 'Course Add Successflly');
     }
 
@@ -49,5 +63,23 @@ class CourseController extends Controller
     public function destroy(Course $course)
     {
         //
+    }
+
+    public function changeCategory($category){
+        //Select Category Botton
+        //0 => all Categories
+        $id = (int)$category;
+        if($id != 0){
+            $category = category::findOrFail($id);
+
+            $courses = Course::with(['category','lessons'])
+            ->where('category_id' ,$id)->get();
+            return view('Dashboard.Courses.chooseCategory')
+            ->with('courses',$courses) ;
+        }else{
+                $courses = Course::all();
+                return view('Dashboard.Courses.chooseCategory')
+                ->with('courses',$courses) ;
+        }
     }
 }

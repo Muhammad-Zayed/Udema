@@ -17,7 +17,7 @@
 
             </div>
         @endif
-        <form method="post" action="{{route('dashboard.courses.store', $category->id)}}" enctype="multipart/form-data">
+        <form method="post" action="{{route('dashboard.courses.store')}}" enctype="multipart/form-data">
             @csrf
             @include('Dashboard.Courses.form')
         </form>

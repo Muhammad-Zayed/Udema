@@ -104,7 +104,7 @@
                             <div class="block-horizzontal"></div>
                             <img src="{{getimg($category->image)}}" class="img-fluid" alt="">
                             <div class="info">
-                                <small><i class="ti-layers"></i>{{$category->courses->count()}}</small>
+                                <small><i class="ti-layers"></i>{{$category->courses_count}}</small>
                                 <h3>{{$category->name}}</h3>
                             </div>
                         </figure>

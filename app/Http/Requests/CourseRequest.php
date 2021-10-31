@@ -28,7 +28,8 @@ class CourseRequest extends FormRequest
             'price' => 'required|numeric',
             'image' => 'nullable|file|mimes:jpg,png,jpeg',
             'short_description' => 'required|max:191|string',
-            'long_description' => 'required|string'
+            'long_description' => 'required|string',
+            'category_id' => 'required'
         ];
     }
 }

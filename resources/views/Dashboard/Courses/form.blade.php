@@ -29,6 +29,17 @@
             <input type="text" name="long_description" class="form-control">
         </div>
 
+        <div class="form-group">
+            <label>Choose Category: </label>
+            <select class="form-control" name="category_id" >
+                <option disabled selected>Choose Category</option>
+                @foreach ($categories as $category)
+                    <option  value="{{ $category->id }}">{{ $category->name }}</option>
+                @endforeach
+
+
+            </select>
+        </div>
 
         <div class="form-group col-md-12">
             <label class="text-semibold"> Image: </label>

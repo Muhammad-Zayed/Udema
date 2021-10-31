@@ -40,7 +40,7 @@
             <div data-loader="circle-side"></div>
         </div><!-- /Preload -->
         <div id="logo">
-            <a href="index.html"><img src="/website/img/logo.png" width="149" height="42" data-retina="true" alt=""></a>
+            <a href="{{ route('main') }}"><img src="/website/img/logo.png" width="149" height="42" data-retina="true" alt=""></a>
         </div>
         <ul id="top_menu">
             @if(!auth()->check())

@@ -16,3 +16,11 @@
         <li><a href="{{route('dashboard.categories.create')}}">Add New Category</a></li>
     </ul>
 </li>
+
+<li>
+    <a href="#"> <i class="icon-cart-add "></i><span>Courses</a>
+    <ul>
+        <li><a href="{{route('dashboard.courses.index')}}">All Courses</a></li>
+        <li><a href="{{route('dashboard.courses.create')}}">Add New Course</a></li>
+    </ul>
+</li>

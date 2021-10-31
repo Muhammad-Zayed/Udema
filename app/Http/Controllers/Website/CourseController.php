@@ -11,8 +11,11 @@ class CourseController extends Controller
 {
     public function index()
     {
-        $courses = Course::orderby('id', 'desc')->get();
+        $courses = Course::has('lessons')
+        ->with(['category','reviews','lessons'])->paginate(12);
+        
         $categories = Category::all();
+        
         return view('Website.Courses.index')
             ->with(['courses' => $courses, 'categories' => $categories]);
 

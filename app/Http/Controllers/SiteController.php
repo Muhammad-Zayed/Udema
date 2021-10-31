@@ -9,8 +9,12 @@ class SiteController extends Controller
 {
     public function index()
     {
-        $courses = Course::limit(6)->get();
-        $categories = Category::limit(6)->get();
+        $categories = Category::has('courses')
+        ->withCount('courses')->limit(6)->get();
+        
+        $courses = Course::has('lessons')
+        ->with(['lessons', 'reviews' , 'category'])->limit(6)->get();
+        
         return view('Website.main')
             ->with('courses', $courses)
             ->with('categories', $categories);
@@ -27,7 +31,7 @@ class SiteController extends Controller
             return view('Website.Courses.chooseCategory')
             ->with('courses',$courses) ;
         }else{
-                $courses = Course::all();
+                $courses = Course::paginate(12);
                 return view('Website.Courses.chooseCategory')
                 ->with('courses',$courses) ;
         }

@@ -33,6 +33,8 @@
                 </div>
             @endforeach
         </div>
+        {{ $categories->links() }}
+
         <!-- /row -->
     </div>
     <!-- /container -->
@@ -61,6 +63,7 @@
                     </a>
                 </div>
             </div>
+
             <!-- /row -->
         </div>
         <!-- /container -->
