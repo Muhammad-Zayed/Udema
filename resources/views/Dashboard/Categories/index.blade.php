@@ -1,7 +1,7 @@
 @extends('Dashboard.Layouts.layout')
 
 @section('title')
-    Show All Users
+    Show All Categories
 @endsection
 
 @section('content')
@@ -42,5 +42,6 @@
         @empty
             <h2>No Categories Available ! </h2>
         @endforelse
+        {{ $categories->links() }}
     </div>
 @endsection

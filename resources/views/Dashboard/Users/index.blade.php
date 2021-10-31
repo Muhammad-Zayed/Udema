@@ -12,7 +12,6 @@
             <div class="heading-elements">
                 <ul class="icons-list">
                     <li><a data-action="collapse"></a></li>
-                    <li><a data-action="reload"></a></li>
                     <li><a data-action="close"></a></li>
                 </ul>
             </div>
@@ -29,8 +28,7 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>Phone</th>
-                <th>Job</th>
-                <th>Status</th>
+                <th>Role</th>
                 <th>Operations</th>
             </tr>
             </thead>
@@ -38,14 +36,18 @@
             @foreach($users as $user)
                 <tr>
                     <td>{{$user->id}}</td>
-                    <td><a href="#">{{$user->name}}</a></td>
+                    <td>
+                        <span>
+                            <img src="{{ getimg($user->image)}}" 
+                            class="img-circle img-sm" alt="">
+                        </span>
+
+                        <a href="">{{$user->name}}</a>
+                    </td>
                     <td>{{$user->email}}</td>
                     <td>{{$user->phone}}</td>
                     <td><span
                             class="label label-{{$user->role=="admin" ? "success" : "default"}}">{{$user->role}}</span>
-                    </td>
-                    <td><span
-                            class="label label-{{$user->is_active ? "success" : "default"}}">{{statusArray()[$user->is_active]}}</span>
                     </td>
                     <td>
                         <a href="{{route('dashboard.users.edit',$user->id)}}">
@@ -64,6 +66,7 @@
 
             </tbody>
         </table>
+        {{ $users->links() }}
     </div>
     <!-- /basic initialization -->
 

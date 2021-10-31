@@ -27,9 +27,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             
             $table->string('image')->nullable();
-            
-            $table->boolean('is_active')->defualt(1);
-            
+                        
             $table->enum('role',['admin','user'])->defualt('user');
 
             $table->rememberToken();

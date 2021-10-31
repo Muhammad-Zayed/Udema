@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Category;
+use App\Course;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
 use Illuminate\Http\Request;
@@ -12,18 +13,15 @@ class CategoryController extends Controller
 
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::with('courses')->paginate(12);
         return view('Dashboard.Categories.index')
             ->with('categories', $categories);
     }
-
 
     public function create()
     {
         return view('Dashboard.Categories.add');
     }
-
-
     public function store(CategoryRequest $request)
     {
         $validatedData = $request->except(['image', '_token']);
@@ -39,8 +37,12 @@ class CategoryController extends Controller
 
     public function show(Category $category)
     {
+        $courses = Course::withCount('lessons')
+        ->where('category_id' , $category->id)->get();
+
         return view('Dashboard.Categories.show')
-            ->with('category', $category);
+            ->with('courses', $courses)
+            ->with('category' , $category);
     }
 
 

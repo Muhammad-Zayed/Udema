@@ -64,25 +64,20 @@
                                      data-parent="#accordion_lessons">
                                     <div class="card-body">
                                         <div class="list_lessons">
-                                            @if (auth()->check())
-                                                @if ($course->isEnrolled()['accepted'])
-                                                    <ul>
-                                                        @foreach ($course->lessons as $lesson)
-                                                            <li><a href="{{$lesson->url}}"
-                                                                   class="video">{{$lesson->name}}</a><span>{{$lesson->duration}} min</span>
-                                                            </li>
-                                                        @endforeach
-                                                    </ul>
-
-                                                @else
-
-                                                    <p>
-                                                        Pleas Confirm Your Enrollment First
-                                                    </p>
-                                                @endif
+                                            @if (auth()->check() && $course->isEnrolled()['accepted'])
+                                                <ul>
+                                                    @foreach ($course->lessons as $lesson)
+                                                        <li>
+                                                            <a href="{{$lesson->url}}"
+                                                                class="video">{{$lesson->name}}
+                                                            </a><span>{{$lesson->duration}} min</span>
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
                                             @else
                                                 <p>
-                                                    Pleas Confirm Your Enrollment First
+                                                    Pleas Login Or 
+                                                    Confirm Your Enrollment First
                                                 </p>
                                             @endif
                                         </div>
@@ -101,7 +96,7 @@
                             <div class="row">
                                 <div class="col-lg-3">
                                     <div id="review_summary">
-                                        <strong>{{$course->reviews->avg('rate')}}</strong>
+                                        <strong>{{round($course->reviews->avg('rate'),2)}}</strong>
                                         <div class="rating">
                                             @include('Website.includes.rate_stars',['rate'=>$course->reviews->avg('rate')])
                                         </div>
@@ -178,8 +173,12 @@
                             <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
                             <span class="text-semibold">{{ Session::get('error') }}.</span>
                         </div>
+                    @elseif(Session::has('success'))
+                        <div class="alert-success alert">
+                            <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
+                            <span class="text-semibold">{{ Session::get('success') }}.</span>
+                        </div>
                     @endif
-
                 </aside>
             </div>
             <!-- /row -->

@@ -46,7 +46,6 @@
             @if(!auth()->check())
                 <li><a href="{{route('login')}}" class="login">Login</a></li>
             @endif
-            <li><a href="#0" class="search-overlay-menu-btn">Search</a></li>
             <li class="hidden_tablet"><a href="admission.html" class="btn_1 rounded">Admission</a></li>
         </ul>
         <!-- /top_menu -->
@@ -67,7 +66,7 @@
                 <button type="submit"><i class="icon_search"></i>
                 </button>
             </form>
-        </div><!-- End Search Menu -->
+        </div>
     </header>
     <!-- /header -->
 
@@ -150,6 +149,21 @@
 @yield('scripts')
 <script src="/website/js/main.js"></script>
 <script src="/website/assets/validate.js"></script>
-
+<script>
+    $(document).ready(function(){
+        $('#choose_category').change(function(){
+            var category_id = $(this).val();
+            $.ajax({
+                url:'/changeCategory',
+                dataType:'html',
+                method:"GET",
+                data:{cat_id:category_id},
+                success:function(response){
+                    $('#change_category').html(response);
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>

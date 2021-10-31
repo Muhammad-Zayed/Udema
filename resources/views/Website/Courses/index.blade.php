@@ -11,54 +11,53 @@
     <!--/hero_in-->
     <div class="filters_listing sticky_horizontal">
         <div class="container">
-            <ul class="clearfix">
-                <li>
-                    <select name="orderby" class="selectbox">
-                        <option selected disabled>Category</option>
-                        @foreach($categories as $category)
-                            <option value="{{$category->id}}">{{$category->name}}</option>
-                        @endforeach
-                    </select>
-                </li>
-            </ul>
+                <select style="padding:0" id="choose_category" class="form-control form-control-sm">
+                    <option selected value="0" >All</option>
+                    @foreach($categories as $category)
+                        <option value="{{$category->id}}">{{$category->name}}</option>
+                    @endforeach
+                </select>
         </div>
         <!-- /container -->
     </div>
     <!-- /filters -->
 
     <div class="container margin_60_35">
-        <div class="row">
-            @foreach($courses as $course)
-                <div class="col-xl-4 col-lg-6 col-md-6">
-                    <div class="box_grid wow">
-                        <figure class="block-reveal">
-                            <div class="block-horizzontal"></div>
-                            <a href="#"><img src="/website/img/2.jpg" class="img-fluid" alt=""></a>
-                            <div class="price">${{$course->price}}</div>
-                            <div class="preview"><span>Preview course</span></div>
-                        </figure>
-                        <div class="wrapper">
-                            <small>{{$course->category->name}}</small>
-                            <h3>{{$course->name}}</h3>
-                            <p>{{$course->short_description}}</p>
-                            <div class="rating">
-                                @include('Website.includes.rate_stars',['rate'=>$course->reviews->avg('rate')])
-                                <small>({{$course->reviews->count()}})</small></div>
+        <div id="change_category">
+            <div class="row">
+                @foreach($courses as $course)
+                    <div class="col-xl-4 col-lg-6 col-md-6">
+                        <div class="box_grid wow">
+                            <figure class="block-reveal">
+                                <div class="block-horizzontal"></div>
+                                <a href="{{route('courses.show',$course->id)}}"><img src="/website/img/2.jpg" class="img-fluid" alt=""></a>
+                                <div class="price">${{$course->price}}</div>
+                                <div class="preview"><span>Preview course</span></div>
+                            </figure>
+                            <div class="wrapper">
+                                <small>{{$course->category->name}}</small>
+                                <h3>{{$course->name}}</h3>
+                                <p>{{$course->short_description}}</p>
+                                <div class="rating">
+                                    @include('Website.includes.rate_stars',['rate'=>$course->reviews->avg('rate')])
+                                    <small>({{$course->reviews->count()}})</small></div>
+                            </div>
+                            <ul>
+                                <li><i class="icon_clock_alt"></i>
+                                    <span>
+                                    {{
+                                    (int)($course->lessons->sum('duration')/60) . ' H - ' . $course->lessons->sum('duration')%60 . ' Min'
+                                    }}
+                                    </span>
+                                </li>
+                                <li><a href="{{route('courses.show',$course->id)}}">Enroll now</a></li>
+                            </ul>
                         </div>
-                        <ul>
-                            <li><i class="icon_clock_alt"></i>
-                                <span>
-                                {{
-                                $course->lessons->sum('duration')/60 . ' H - ' . $course->lessons->sum('duration')%60 . ' Sec'
-                                }}
-                                </span>
-                            </li>
-                            <li><a href="{{route('courses.show',$course->id)}}">Enroll now</a></li>
-                        </ul>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            </div>
         </div>
+
         <!-- /row -->
     </div>
     <!-- /container -->

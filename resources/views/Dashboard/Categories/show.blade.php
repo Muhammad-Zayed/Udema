@@ -1,7 +1,7 @@
 @extends('Dashboard.Layouts.layout')
 
 @section('title')
-    Show All Users
+    All {{ $category->name }} Courses !
 @endsection
 
 @section('content')
@@ -12,7 +12,7 @@
         <small class="display-block">All Available Courses For {{$category->name}} Category .</small>
     </h4>
     <div class="row">
-        @forelse($category->courses as $course)
+        @forelse($courses as $course)
             <div class="col-lg-3 col-md-6">
                 <div class="thumbnail no-padding">
                     <div class="thumb">
@@ -28,7 +28,7 @@
                             </small>
                             <small class="display-block">
                                 Total Lessons
-                                ( {{$course->lessons->count()}} )
+                                ( {{$course->lessons_count}} )
                             </small>
                         </h6>
                         <div style="margin-top: 10px">

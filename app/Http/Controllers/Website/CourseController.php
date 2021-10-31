@@ -6,8 +6,6 @@ use App\Category;
 use App\Course;
 use App\CourseEnroll;
 use App\Http\Controllers\Controller;
-use App\Review;
-use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
@@ -36,7 +34,7 @@ class CourseController extends Controller
                 'is_cofirmed' => 0
             ]);
         }
-        return redirect(route('courses.show', $course->id))->with('error', 'Your Request Has Been Send !');
+        return redirect(route('courses.show', $course->id))->with('success', 'Your Request Has Been Send !');
 
     }
 }

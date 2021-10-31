@@ -6,13 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
 use App\User;
 use Hash;
-use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        $users = User::paginate(15);
         return view('Dashboard.Users.index', compact('users'));
     }
 
@@ -36,13 +35,6 @@ class UserController extends Controller
         return redirect(route('dashboard.users.index'))
             ->with('success', 'User Added Succesfully');
     }
-
-
-    public function show(User $user)
-    {
-
-    }
-
 
     public function edit(User $user)
     {
