@@ -17,7 +17,7 @@ class CreateCoursesTable extends Migration
 
             $table->bigIncrements('id');
 
-            $table->string('name');
+            $table->string('name')->unique();
 
             $table->string('image');
 
@@ -30,7 +30,9 @@ class CreateCoursesTable extends Migration
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')
                 ->references('id')
-                ->on('categories');
+                ->on('categories')
+                ->onDelete('cascade');
+
 
             $table->timestamps();
         });

@@ -31,7 +31,7 @@ class SiteController extends Controller
             return view('Website.Courses.chooseCategory')
             ->with('courses',$courses) ;
         }else{
-                $courses = Course::paginate(12);
+                $courses = Course::all();
                 return view('Website.Courses.chooseCategory')
                 ->with('courses',$courses) ;
         }

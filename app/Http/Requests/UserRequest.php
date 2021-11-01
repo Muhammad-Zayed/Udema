@@ -23,14 +23,24 @@ class UserRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+
+        $roles =  [
             'name' => 'required|max:191|string',
             'email' => 'required|email|max:191,unique:users,email',
             'phone' => 'required|string|max:191,unique:users,phone',
-            'password' => 'required|min:6|max:191|confirmed',
             'role' => 'required|string|in:user,admin',
-            'is_active' => 'required|boolean',
             'image' => 'nullable|file|mimes:jpg,png,jpeg'
         ];
+
+        if ($this->method() == 'POST') {
+            // 'password' => 'required|min:6|max:191|confirmed',
+
+            $roles['password'] = 'required|min:6|max:191|confirmed';
+        }else{
+            if($this->input('password')!=null)
+                $roles['password'] = 'min:6|max:191|confirmed';
+        }
+
+        return $roles;
     }
 }

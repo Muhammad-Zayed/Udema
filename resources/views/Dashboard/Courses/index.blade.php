@@ -6,7 +6,7 @@
 
 @section('content')
     <div style="margin-bottom:20px; ">
-        <select onchange="myFunction()" style="padding:0" id="choose_category" class="form-control form-control-sm">
+        <select onchange="myFunction()" style="padding:0 0 0 5px" id="choose_category" class="form-control form-control-sm">
             <option selected value="0" >All</option>
             @foreach($categories as $category)
                 <option value="{{$category->id}}">{{$category->name}}</option>
@@ -34,6 +34,7 @@
                                     ( {{$course->lessons->count()}} )
                                 </small>
                             </h6>
+                            <a href="{{ route('dashboard.courses.show' , $course->id) }}">Course Details</a>
                             <div style="margin-top: 10px">
                                 <form style="display: inline" method="POST"
                                       action="{{route('dashboard.courses.destroy' , $course->id)}}">
@@ -49,7 +50,7 @@
                     </div>
                 </div>
             @empty
-                <h2>No Categories Available ! </h2>
+                <h2 style="margin-left:10px ">No Courses Available ! </h2>
             @endforelse
         </div>
     </div>

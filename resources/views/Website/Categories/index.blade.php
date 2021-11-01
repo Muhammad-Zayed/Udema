@@ -17,7 +17,7 @@
                     <div class="box_grid wow">
                         <figure class="block-reveal">
                             <div class="block-horizzontal"></div>
-                            <a href=""><img src="{{getimg($category->image)}}" class="img-fluid" alt=""></a>
+                            <a href="{{route('categories.show',$category->id)}}"><img src="{{getimg($category->image)}}" class="img-fluid" alt=""></a>
                             <div class="preview"><span>Preview course</span></div>
                         </figure>
                         <div class="wrapper">

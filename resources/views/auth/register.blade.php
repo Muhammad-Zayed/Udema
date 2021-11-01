@@ -53,6 +53,16 @@
 				</button>
 				<div class="text-center add_top_10">Already have an acccount? <strong><a href="login.html">Sign In</a></strong></div>
 			</form>
-			<div class="copy">© 2017 Udema</div>
+			@if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+
+            </div>
+        	@endif
+			<div class="copy">© 2017 Udema</div>	
 		</aside>
 @endsection

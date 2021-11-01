@@ -6,14 +6,6 @@
             <div class="container">
                 <h3>What would you learn?</h3>
                 <p>Increase your expertise in business, technology and personal development</p>
-                <form>
-                    <div id="custom-search-input">
-                        <div class="input-group">
-                            <input type="text" class=" search-query" placeholder="Ex. Architecture, Specialization...">
-                            <input type="submit" class="btn_search" value="Search">
-                        </div>
-                    </div>
-                </form>
             </div>
         </div>
     </section>
@@ -40,9 +32,7 @@
         <div class="main_title_2">
             <span><em></em></span>
             <h2>Udema Popular Courses</h2>
-            @if($courses!=NULL)
-                <p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p>
-            @else
+            @if($courses==NULL)
                 <h3 style="margin-top:40px ">No Courses Available ! </h3>
             @endif
         </div>
@@ -89,10 +79,8 @@
     <div class="container margin_30_95">
         <div class="main_title_2">
             <span><em></em></span>
-            <h2>Udema Categories Courses</h2>
-            @if($categories!=NULL)
-                <p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p>
-            @else
+            <h2>Udema Categories </h2>
+            @if($categories==NULL)
                 <h3 style="margin-top:40px ">No Courses Available ! </h3>
             @endif
         </div>

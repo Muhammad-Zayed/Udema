@@ -41,11 +41,6 @@
             {!! Form::select('role',userRoles(), null, ['placeholder' => 'Select User Role']) !!}
         </div>
 
-        <div class="form-group">
-            <label>Select Status: </label>
-            {!! Form::select('is_active',statusArray(), null, ['placeholder' => 'Select User Status']) !!}
-        </div>
-
         <div class="form-group col-md-12">
             <label class="text-semibold"> Image: </label>
             <div class="media no-margin-top">

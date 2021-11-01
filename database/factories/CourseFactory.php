@@ -8,7 +8,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Course::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
+        'name' => $faker->unique()->name(),
         'image' => 'photos/OqkOwQLaBOL9JHB0q5UGjdM8YQtpt1Csa8Phlhl7.jpg',
         'price' => 1200,
         'short_description'=> $faker->sentence(10),

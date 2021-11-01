@@ -18,7 +18,7 @@
         </div>
 
         <div class="panel-body">
-            You Can Show All Users And performs All operations like search , Edit , show And Delete
+            You Can Show All Users And performs All operations like Edit And Delete .
         </div>
 
         <table class="table datatable-button-init-basic">

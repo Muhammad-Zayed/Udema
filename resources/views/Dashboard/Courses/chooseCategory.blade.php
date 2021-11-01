@@ -33,6 +33,6 @@
             </div>
         </div>
     @empty
-        <h2>No Categories Available ! </h2>
+        <h2 style="margin-left:10px " >No Courses Available ! </h2>
     @endforelse
 </div>

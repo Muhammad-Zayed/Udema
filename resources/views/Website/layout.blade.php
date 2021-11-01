@@ -46,7 +46,6 @@
             @if(!auth()->check())
                 <li><a href="{{route('login')}}" class="login">Login</a></li>
             @endif
-            <li class="hidden_tablet"><a href="admission.html" class="btn_1 rounded">Admission</a></li>
         </ul>
         <!-- /top_menu -->
         <a href="#menu" class="btn_mobile">

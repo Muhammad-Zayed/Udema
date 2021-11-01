@@ -1137,14 +1137,7 @@ video {
         height: 450px;
     }
 }
-.hero_single:before {
-    background: url(http://via.placeholder.com/1600x1067/ccc/fff/home_section_2.jpg)
-        center center no-repeat fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
+
 .hero_single .wrapper {
     background-color: #632c8d;
     background-color: rgba(102, 45, 145, 0.8);
@@ -1215,14 +1208,7 @@ video {
         height: 450px;
     }
 }
-.hero_single.version_2:before {
-    background: url(http://via.placeholder.com/1600x1067/ccc/fff/home_section_1.jpg)
-        center center no-repeat fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
+
 .hero_single.version_2 .wrapper {
     background-color: #372675;
     background-color: rgba(57, 39, 121, 0.8);

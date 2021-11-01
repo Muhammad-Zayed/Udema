@@ -11,32 +11,39 @@
     <div class="panel-body">
         <div class="form-group">
             <label>Course Name: </label>
-            <input type="text" name="name" class="form-control">
+            <input type="text" name="name" class="form-control" value="{{old('name' , optional($course ?? null)->name)}}">
         </div>
 
         <div class="form-group">
             <label>Price: </label>
-            <input type="number" name="price" class="form-control">
+            <input type="number" name="price" class="form-control" value="{{old('price' , optional($course ?? null)->price)}}">
         </div>
 
         <div class="form-group">
             <label>Short Description: </label>
-            <input type="text" name="short_description" class="form-control">
+            <input type="text" name="short_description" class="form-control" value="{{old('short_description' , optional($course ?? null)->short_description)}}">
         </div>
 
         <div class="form-group">
             <label>Long Description: </label>
-            <input type="text" name="long_description" class="form-control">
+        
+            <textarea cols="30" rows="10"  name="long_description" class="form-control" >{{old('long_description' , optional($course ?? null)->long_description)}}</textarea>
         </div>
-
+        
+        {{--  <textarea name="" id="" cols="30" rows="10"></textarea>  --}}
         <div class="form-group">
             <label>Choose Category: </label>
             <select class="form-control" name="category_id" >
-                <option disabled selected>Choose Category</option>
-                @foreach ($categories as $category)
-                    <option  value="{{ $category->id }}">{{ $category->name }}</option>
-                @endforeach
-
+                @if(!isset($course))
+                    <option disabled selected>Choose Category</option>
+                    @foreach ($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                @else
+                    @foreach ($categories as $category)
+                    <option {{ $course->category_id == $category->id ? "selected" :"" }}  value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                @endif
 
             </select>
         </div>

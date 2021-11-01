@@ -50,7 +50,8 @@ class UserController extends Controller
         if ($request->hasFile('image')) {
             $validatedData['image'] = uploader($request, 'image');
         }
-        $validatedData['password'] = Hash::make($request->password);
+        if($request->input('password')!=null)
+            $validatedData['password'] = Hash::make($request->password);
 
         $user->update($validatedData);
 

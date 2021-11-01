@@ -11,7 +11,7 @@
                 <div class="wrapper">
                     <small>{{$course->category->name}}</small>
                     <h3>{{$course->name}}</h3>
-                    <p>{{$course->short_description}}</p>
+                    <p>{{Str::limit($course->short_description, 30)}}</p>
                     <div class="rating">
                         @include('Website.includes.rate_stars',['rate'=>$course->reviews->avg('rate')])
                         <small>({{$course->reviews->count()}})</small></div>

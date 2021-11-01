@@ -33,7 +33,7 @@
                             <li><i class="icon_clock_alt"></i>
                                 <span>
                                 {{
-                                $course->lessons->sum('duration')/60 . ' H - ' . $course->lessons->sum('duration')%60 . ' Sec'
+                                (int)($course->lessons->sum('duration')/60) . ' H - ' . $course->lessons->sum('duration')%60 . ' Sec'
                                 }}
                                 </span>
                             </li>

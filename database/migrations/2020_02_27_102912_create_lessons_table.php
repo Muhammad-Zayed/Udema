@@ -16,13 +16,14 @@ class CreateLessonsTable extends Migration
         Schema::create('lessons', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('url');
-            $table->string('name');
+            $table->string('name')->unique();
             $table->integer('duration');
             
             $table->unsignedBigInteger('course_id');
             $table->foreign('course_id')
                 ->references('id')
-                ->on('courses');
+                ->on('courses')
+                ->onDelete('cascade');
 
             $table->timestamps();
         });

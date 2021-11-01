@@ -21,13 +21,17 @@ class CreateReviewsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')
             ->references('id')
-            ->on('users');
+            ->on('users')
+            ->onDelete('cascade');
+
 
 
             $table->unsignedBigInteger('course_id');
             $table->foreign('course_id')
             ->references('id')
-            ->on('courses');
+            ->on('courses')
+            ->onDelete('cascade');
+
 
             $table->timestamps();
         });

@@ -23,7 +23,12 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => 'ad
 
     Route::resource('courses', 'CourseController');
 
-    Route::resource('courses', 'CourseController')->except('index', 'create', 'store');
     Route::get('/changeCategory/{Category}','CourseController@changeCategory');
+    
+    
+    Route::get('lessons/create/{course}' , 'LessonController@create')->name('lessons.create');
+    Route::post('lessons/{course}' , 'LessonController@store')->name('lessons.store');
+    Route::resource('lessons', 'LessonController')->except('index' , 'create' , 'store');
+
 
 });

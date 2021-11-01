@@ -8,7 +8,7 @@ use Faker\Generator as Faker;
 $factory->define(Lesson::class, function (Faker $faker) {
     return [
         'url' =>"https://www.youtube.com/watch?v=bHvSfxyNkeA",
-        'name'=>$faker->name(),
+        'name'=>$faker->unique()->name(),
         'duration' => 5,
 
     ];

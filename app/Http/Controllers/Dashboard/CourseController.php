@@ -6,7 +6,7 @@ use App\Category;
 use App\Course;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CourseRequest;
-use Illuminate\Http\Request;
+use App\Lesson;
 
 class CourseController extends Controller
 {
@@ -27,7 +27,6 @@ class CourseController extends Controller
         return view('Dashboard.Courses.add',
         [
             'categories'=>$categories,
-    
         ]);
     }
 
@@ -47,28 +46,46 @@ class CourseController extends Controller
 
     public function show(Course $course)
     {
-        //
+        $lessons = Lesson::where('course_id' , $course->id)->paginate(10);
+        return view('Dashboard.Courses.show',[
+            'course'=>$course,
+            'lessons'=>$lessons
+        ]);
     }
 
     public function edit(Course $course)
     {
-        //
+        $categories = Category::all();
+        return view('Dashboard.Courses.edit',[
+            'course'=>$course,
+            'categories' =>$categories
+        ]);
     }
 
-    public function update(Request $request, Course $course)
+    public function update(CourseRequest $request, Course $course)
     {
-        //
+        $validatedData = $request->except(['image', '_token']);
+        if ($request->hasFile('image')) {
+            $validatedData['image'] = uploader($request, 'image');
+        }
+
+        $course->update($validatedData);
+        return redirect(route('dashboard.courses.index'))
+            ->with('success', 'Course Updated Succesfully');
     }
 
     public function destroy(Course $course)
     {
-        //
+        $course->delete();
+        return redirect(route('dashboard.courses.index'))
+            ->with('success', 'Course Deleted Succesfully');
     }
 
     public function changeCategory($category){
         //Select Category Botton
         //0 => all Categories
         $id = (int)$category;
+        
         if($id != 0){
             $category = category::findOrFail($id);
 
