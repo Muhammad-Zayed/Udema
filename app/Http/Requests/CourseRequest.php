@@ -24,7 +24,7 @@ class CourseRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:191|string',
+            'name' => 'required|max:191|string|unique:courses,name',
             'price' => 'required|numeric',
             'image' => 'nullable|file|mimes:jpg,png,jpeg',
             'short_description' => 'required|max:191|string',

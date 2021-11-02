@@ -14,7 +14,7 @@ class ReviewsTableSeeder extends Seeder
         $users = User::all();
         $courses = Course::all();
 
-        factory(Review::class, 30)->make()->each(function($review) use ($users ,$courses ) {
+        factory(Review::class, 100)->make()->each(function($review) use ($users ,$courses ) {
             $review->user_id = $users->random()->id;
             $review->course_id = $courses->random()->id;
             $review->save();

@@ -18,11 +18,15 @@
             @forelse($courses as $course)
                 <div class="col-lg-3 col-md-6">
                     <div class="thumbnail no-padding">
-                        <div class="thumb">
-                            <img src="{{getimg($course->image)}}" alt="">
-                            <div class="caption-overflow"></div>
-                        </div>
-    
+                        <a href="{{ route('dashboard.courses.show' , $course->id) }}">
+                            <div class="thumb">
+                                <img src="{{getimg($course->image)}}" alt="">
+                                <div class="caption-overflow">
+                                    <h3 style="margin-top:100px">View Course</h3>
+                                </div>
+                            </div>    
+                        </a>
+                        
                         <div class="caption text-center">
                             <h6 class="text-semibold no-margin">{{$course->name}}
                                 <small class="display-block">

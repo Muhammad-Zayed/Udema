@@ -15,7 +15,7 @@ class CreateCourseEnrollsTable extends Migration
     {
         Schema::create('course_enrolls', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->boolean('is_cofirmed')->defualt(0);
+            $table->boolean('is_confirmed')->defualt(0);
             
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')

@@ -81,8 +81,9 @@ class CourseController extends Controller
             ->with('success', 'Course Deleted Succesfully');
     }
 
+
     public function changeCategory($category){
-        //Select Category Botton
+        //Select Category Button
         //0 => all Categories
         $id = (int)$category;
         

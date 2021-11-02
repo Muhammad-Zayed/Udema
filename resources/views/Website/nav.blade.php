@@ -19,5 +19,12 @@
                 @csrf
             </form>
         @endif
+
+            @if(!(auth()->check()))
+                <li><span><a href="{{route('login')}}">
+                    Login
+                </a></span></li>
+            @endif
+
     </ul>
 </nav>

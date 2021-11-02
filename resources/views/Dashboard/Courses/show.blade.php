@@ -44,7 +44,7 @@
 
                     <td>
                         <a href="{{route('dashboard.lessons.edit',$lesson->id)}}">
-                            <botton class="btn btn-primary">Edit</botton>
+                            <button class="btn btn-primary">Edit</button>
                         </a>
                         <form style="display: inline" action="{{route('dashboard.lessons.destroy' , $lesson->id)}}"
                               method="post">
@@ -106,7 +106,7 @@
                     <td>{{ $review->rate}}</td>
 
                     <td>
-                        <form style="display: inline" action="{{route('dashboard.lessons.destroy' , $lesson->id)}}"
+                        <form style="display: inline" action="{{route('dashboard.reviews.destroy' , $review->id)}}"
                               method="post">
                             @csrf
                             @method('delete')

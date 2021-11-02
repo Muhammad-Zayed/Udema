@@ -24,3 +24,6 @@
         <li><a href="{{route('dashboard.courses.create')}}">Add New Course</a></li>
     </ul>
 </li>
+<li>
+    <a href="{{ route('dashboard.courses_enrolls.index') }}"> <i class="icon-alarm "></i><span>Enrollment Requests</a>
+</li>

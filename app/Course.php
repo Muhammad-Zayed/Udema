@@ -55,13 +55,13 @@ class Course extends Model
         $conditions = ['course_id' => $this->id, 'user_id' => $user_id];
         $course_enrolled = CourseEnroll::where($conditions)->first();
 
-
         $ValidOrNot = [
             'accepted' => false, // User Enrolled And Has been Accepted
             'exists' => false    // User Enrolled And Still Pending
         ];
+
         if ($course_enrolled) {
-            if ($course_enrolled->is_cofirmed) $ValidOrNot['accepted'] = true; //For View
+            if($course_enrolled->is_confirmed) $ValidOrNot['accepted'] = true; //For View
             else $ValidOrNot['exists'] = true;  //For Controller
         }
         return $ValidOrNot;

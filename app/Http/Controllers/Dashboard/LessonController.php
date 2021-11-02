@@ -27,11 +27,6 @@ class LessonController extends Controller
             ->with('success', 'Lesson Add Successflly');
     }
 
-    public function show(Lesson $lesson)
-    {
-        //
-    }
-
     public function edit(Lesson $lesson)
     {
         return view('Dashboard.Lessons.edit',[

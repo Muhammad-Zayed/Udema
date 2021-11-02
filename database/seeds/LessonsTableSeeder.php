@@ -14,7 +14,7 @@ class LessonsTableSeeder extends Seeder
     public function run()
     {
         $courses = Course::all();
-        factory(Lesson::class, 30)->make()->each(function($lesson) use ($courses) {
+        factory(Lesson::class, 100)->make()->each(function($lesson) use ($courses) {
             $lesson->course_id = $courses->random()->id;
             $lesson->save();
         });

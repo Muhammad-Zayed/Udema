@@ -28,13 +28,13 @@ class CourseController extends Controller
 
     public function enroll(Course $course)
     {
-        if ($course->isEnrolled()['exists'])
+        if($course->isEnrolled()['exists'])
             return redirect(route('courses.show', $course->id))->with('error', 'You Already Requested The Enrollment !');
         else {
             CourseEnroll::create([
+                'is_confirmed' => false,
                 'course_id' => $course->id,
-                'user_id' => auth()->user()->id,
-                'is_cofirmed' => 0
+                'user_id' => auth()->user()->id
             ]);
         }
         return redirect(route('courses.show', $course->id))->with('success', 'Your Request Has Been Send !');

@@ -51,7 +51,7 @@
                     </td>
                     <td>
                         <a href="{{route('dashboard.users.edit',$user->id)}}">
-                            <botton class="btn btn-primary">Edit</botton>
+                            <button class="btn btn-primary">Edit</button>
                         </a>
                         <form style="display: inline" action="{{route('dashboard.users.destroy' , $user->id)}}"
                               method="post">
